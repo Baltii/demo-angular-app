@@ -1,0 +1,39 @@
+<div class="d-flex align-items-center">
+  <h1 class="py-3 me-auto">Lists des livres</h1>
+  <button class="btn btn-primary" [routerLink]="'/home'" style="height: fit-content;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"></path>
+      <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"></path>
+    </svg>
+    </button>
+</div>
+<button class="btn btn-success" [routerLink]="['/books', 'add']">
+  Ajouter un livre
+  </button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Auteur</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Editer</th>
+      <th scope="col">Supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <th scope="row">{{book.id}}</th>
+      <td>{{book.title | uppercase}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.price}}</td>
+      <td><button
+        class="btn btn-primary"
+        [routerLink]="['/books', 'edit', book.id]" >
+          Editer
+        </button>
+      </td>
+      <td><button class="btn btn-danger" (click)="deleteBook(book.id)" >Supprimer</button></td>
+    </tr>
+  </tbody>
+</table>
